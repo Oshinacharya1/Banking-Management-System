@@ -3,8 +3,6 @@ package com.project.BankingManagement.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 @Entity
 @Data
 public class Loan {
@@ -14,7 +12,7 @@ public class Loan {
 
     private String type; // HOME, CAR, PERSONAL
 
-    private BigDecimal amount;
+    private int amount;
 
     private Double interestRate;
 
