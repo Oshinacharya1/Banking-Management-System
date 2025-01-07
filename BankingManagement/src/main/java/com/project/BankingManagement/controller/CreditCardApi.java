@@ -1,4 +1,4 @@
 package com.project.BankingManagement.controller;
 
-public class AccountApi {
+public class CreditCardApi {
 }

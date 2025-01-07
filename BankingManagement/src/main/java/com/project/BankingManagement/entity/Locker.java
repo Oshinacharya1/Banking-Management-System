@@ -1,29 +1,22 @@
 package com.project.BankingManagement.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class Transaction {
+public class Locker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
     @Column(nullable = false)
-    private String type; //debit, credit
+    private String lockerNumber;
 
 
     @Column(nullable = false)
-    private Double amount;
-
-
-    @Column(nullable = false)
-    private LocalDateTime transactionDate;
+    private Boolean isAvailable; // status available or not
 
     @ManyToOne
     private User user;

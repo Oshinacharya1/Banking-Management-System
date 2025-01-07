@@ -1,4 +1,4 @@
 package com.project.BankingManagement.service;
 
-public class AccountService {
+public class LockerService {
 }
