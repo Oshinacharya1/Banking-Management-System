@@ -1,6 +1,9 @@
 package com.project.BankingManagement.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -12,17 +15,20 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String type; // HOME, CAR, PERSONAL
 
-    @Column(nullable = false)
+    @NotNull(message = "Loan type is required.")
+    private String loanType; // HOME, CAR, PERSONAL
+
+    @NotNull(message = "Loan amount is required.")
+    @Min(value = 5000, message = "Loan amount must be at least 5000.")
     private BigDecimal amount;
 
-    @Column(nullable = false)
+    @NotNull(message = "Interest rate is required.")
+    @Min(value = 1, message = "Interest rate cannot be 0 or negative.")
     private Double interestRate;
 
-    @Column(nullable = false)
-    private String status; // PENDING, APPROVED, REJECTED
+    @NotBlank(message = "Status is required.")
+    private String status = "PENDING"; // PENDING, APPROVED, REJECTED
 
     @ManyToOne
     private User user;

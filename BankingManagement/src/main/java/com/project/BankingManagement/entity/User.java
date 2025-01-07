@@ -11,11 +11,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotNull (message = "Username is required.")
     @Column(unique = true)
     private String username;
 
-    @NotNull
+    @NotNull (message = "Password is required.")
     private String password;
 
     @NotNull

@@ -1,6 +1,8 @@
 package com.project.BankingManagement.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
@@ -11,11 +13,11 @@ public class Locker {
     private Long id;
 
 
-    @Column(nullable = false)
+    @NotBlank(message = "Locker number is required.")
     private String lockerNumber;
 
 
-    @Column(nullable = false)
+    @NotNull
     private Boolean isAvailable; // status available or not
 
     @ManyToOne
