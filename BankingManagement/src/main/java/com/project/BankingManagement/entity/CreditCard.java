@@ -3,9 +3,10 @@ package com.project.BankingManagement.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class CreditCard {
     @Id
@@ -29,4 +30,39 @@ public class CreditCard {
     @ManyToOne
     private User user;
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public Double getCreditLimit() {
+        return creditLimit;
+    }
+
+    public void setCreditLimit(Double creditLimit) {
+        this.creditLimit = creditLimit;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
