@@ -1,6 +1,5 @@
 package com.project.BankingManagement.service;
 
-
 import com.project.BankingManagement.entity.User;
 import com.project.BankingManagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
