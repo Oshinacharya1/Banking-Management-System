@@ -22,19 +22,29 @@ public class Loan {
     @NotNull(message = "Loan type is required.")
     private String loanType; // HOME, CAR, PERSONAL
 
+    @NotNull(message = "Name is required.")
+    private String name;
+
+    @NotNull(message = "Address is required.")
+    private String address;
+
+    @NotNull(message = "Phone is required.")
+    private String phone;
+
+    @NotNull(message = "Email is required.")
+    private String email;
+
     @NotNull(message = "Loan amount is required.")
     @Min(value = 5000, message = "Loan amount must be at least 5000.")
     private BigDecimal amount;
 
-    @NotNull(message = "Interest rate is required.")
-    @Min(value = 1, message = "Interest rate cannot be 0 or negative.")
-    private Double interestRate;
+    //@NotNull(message = "Interest rate is required.")
+    //@Min(value = 1, message = "Interest rate cannot be 0 or negative.")
+    // Default interest rate
+    private Double interestRate = 6.8;
 
     @NotBlank(message = "Status is required.")
     private String status = "PENDING"; // PENDING, APPROVED, REJECTED
-
-    @ManyToOne
-    private User user;
 
     public Long getId() {
         return id;
@@ -73,11 +83,35 @@ public class Loan {
         this.status = status;
     }
 
-    public User getUser() {
-        return user;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -22,8 +22,9 @@ public class User {
     @NotNull (message = "Password is required.")
     private String password;
 
-    @NotNull
-    private String role; //customer, employee, admin
+    private String email;
+
+    private String role = "USER"; //customer, employee, admin
 
     public Long getId() {
         return id;
@@ -49,7 +50,11 @@ public class User {
         return role;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

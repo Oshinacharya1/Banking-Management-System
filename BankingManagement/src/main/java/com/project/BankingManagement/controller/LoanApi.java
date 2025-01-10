@@ -16,16 +16,16 @@ public class LoanApi {
     private LoanService loanService;
 
     // Apply for a loan
-    @PostMapping
+    @GetMapping("/apply-loan")
     public ResponseEntity<Loan> applyLoan(@RequestBody Loan loan) {
         Loan appliedLoan = loanService.applyLoan(loan);
         return ResponseEntity.ok(appliedLoan);
     }
 
-    // Get loans by user ID
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Loan>> getUserLoans(@PathVariable Long userId) {
-        List<Loan> userLoans = loanService.getUserLoans(userId);
+    // Get loans by user email
+    @GetMapping("/user/{userEmail}")
+    public ResponseEntity<List<Loan>> getUserLoans(@PathVariable String emailId) {
+        List<Loan> userLoans = loanService.getUserLoans(emailId);
         return ResponseEntity.ok(userLoans);
     }
 
@@ -42,4 +42,7 @@ public class LoanApi {
         Loan rejectedLoan = loanService.rejectLoan(loanId);
         return ResponseEntity.ok(rejectedLoan);
     }
+    //loan apply
+    //loan status
+    //
 }

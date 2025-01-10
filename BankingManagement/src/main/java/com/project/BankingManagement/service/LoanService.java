@@ -19,8 +19,8 @@ public class LoanService {
         return loanRepository.save(loan);
     }
 
-    public List<Loan> getUserLoans(Long userId) {
-        return loanRepository.findByUserId(userId);
+    public List<Loan> getUserLoans(String emailId) {
+        return loanRepository.findByEmail(emailId);
     }
 
     public Loan approveLoan(Long loanId) {
