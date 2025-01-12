@@ -22,6 +22,7 @@ public class User {
     @NotNull (message = "Password is required.")
     private String password;
 
+    @Column(unique=true)
     private String email;
 
     private String role = "USER"; //customer, employee, admin

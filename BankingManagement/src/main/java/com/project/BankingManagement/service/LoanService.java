@@ -5,8 +5,11 @@ import com.project.BankingManagement.repository.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 
 @Service
@@ -17,10 +20,6 @@ public class LoanService {
     public Loan applyLoan(Loan loan) {
         loan.setStatus("PENDING");
         return loanRepository.save(loan);
-    }
-
-    public List<Loan> getUserLoans(String emailId) {
-        return loanRepository.findByEmail(emailId);
     }
 
     public Loan approveLoan(Long loanId) {
@@ -36,4 +35,18 @@ public class LoanService {
         loan.setStatus("REJECTED");
         return loanRepository.save(loan);
     }
+    public Optional<Loan> getLoanById(Long loanId) {
+        return loanRepository.findById(loanId);
+    }
+
+    public List<Loan> getAllLoansForUser(String emailId){
+        String email = URLDecoder.decode(emailId, StandardCharsets.UTF_8);
+        System.out.println("Decoded email: " + email);
+        return loanRepository.findAllByEmail(email);
+    }
+
+    public List<Loan> getAllLoansForAdmin(){
+        return loanRepository.findAll();
+    }
+
 }

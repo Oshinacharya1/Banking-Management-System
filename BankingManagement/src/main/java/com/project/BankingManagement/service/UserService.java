@@ -29,9 +29,19 @@ public class UserService {
         );
         if(authentication.isAuthenticated()) {
             System.out.println("Success user match in database");
-            return "Success!";
+            User existingUserDetail = findByUser(user);
+            return existingUserDetail.getEmail();
         }
         return "Failed";
+    }
+
+    public User findByUser(User user){
+        return userRepository.findByUsername(user.getUsername());
+    }
+
+    public boolean isUserAdmin(String email){
+        User user = userRepository.findByEmail(email);
+        return "ADMIN".equalsIgnoreCase(user.getRole());
     }
 
 }
